@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <a href="reg.html">Register</a>
+      
+       
+    </nav>
+    <div id="err" style="color: red;"></div>
+    <input type="text" id="t1" placeholder="select uid"/>
+    <input type="password" id="t2" placeholder="enter password"/>
+    <button onclick="login()">login</button>
+    <script>
+        let login=()=>{
+            let t1=document.getElementById("t1")
+            let t2=document.getElementById("t2")
+            let dref=document.getElementById("err")
+            let storedpwd=localStorage.getItem(t1.value)
+            if(storedpwd==undefined)
+            {
+                dref.innerHTML="check uid"
+            }
+            else if(storedpwd==t2.value)
+            {
+                window.location="home.html"
+                localStorage.setItem("loginuid",t1.value)
+            }
+            else{
+                dref.innerHTML="check password"
+            }
+
+        }
+    </script>
+</body>
+</html>

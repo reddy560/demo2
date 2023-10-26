@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        
+        <a href="login.html">Login</a>
+       
+    </nav>
+    <div>
+        <div id="err" style="color: red;"></div>
+        <input type="text" id="t1" placeholder="select uid"/>
+        <input type="password" id="t2" placeholder="enter password"/>
+        <input type="password" id="t3" placeholder="retype password"/>
+        <button onclick="reg()">Register</button>
+    </div>
+    <script>
+        let reg=()=>{
+            let t1=document.getElementById("t1")
+            let t2=document.getElementById("t2")
+            let t3=document.getElementById("t3")
+            let dref=document.getElementById("err")
+            let res=localStorage.getItem(t1.value)
+            if(res!=undefined)
+            {
+                dref.innerHTML="user id already exits"
+            }
+            else{
+                if(t2.value==t3.value)
+                {
+                    localStorage.setItem(t1.value,t2.value)
+                    window.location="login.html"
+                }
+                else{
+                    dref.innerHTML="check passwords"
+                }
+            }
+
+        }
+    </script>
+</body>
+</html>
